@@ -1,0 +1,34 @@
+.header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.box-input {
+ display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+ 
+} 
+.box-input input {
+  
+  border: none;
+  padding: 10px;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  width: 70vh;/* ancho en vh por que en % el display flex del padre hace al input  mas pequeño */
+  
+}
+::placeholder{
+    font-family: "Font Awesome 5 Free"; 
+    font-weight: 600;
+
+}
+.box-input input:focus{
+   outline: none;
+    background-color: rgb(7, 7, 7);
+    color: white;
+}
