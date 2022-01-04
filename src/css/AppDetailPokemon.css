@@ -1,0 +1,63 @@
+.box-poke-detail {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.box-poke-detail .box-order-details .box-img {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px;
+  width: 30%;
+}
+.box-order-details {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+
+  color: white;
+}
+header span {
+  color: white;
+}
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  transform: perspective(500px) rotatey(30deg);
+
+  width: 30%;
+}
+.details span {
+  padding: 2px;
+  margin: 10px;
+
+  border: 1px solid rgb(121, 120, 120);
+  border-radius: 10px;
+}
+
+.stats {
+  transform: perspective(600px) rotatey(-30deg);
+
+  width: 30%;
+}
+.progress {
+  border: 1px solid rgb(121, 120, 120);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.flex-center {
+  display: flex;
+}

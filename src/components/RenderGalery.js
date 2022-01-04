@@ -1,13 +1,22 @@
-import React from 'react'
-import AppCard from './AppCard';
+import React from "react";
+import AppCard from "./AppCard";
 import AppSpinner from "./AppSpinner";
 
-export const RenderGalery = ({pokemon,list}) => {
-    return (
-        <>
-            {pokemon ? (
-        <div className="card">
-          <AppCard pokemon={pokemon} />
+export const RenderGalery = ({ list, poke }) => {
+  return (
+    <>
+      {poke ? (
+        <div>
+          {poke && (
+            <div className="card">
+              <AppCard
+                searchId={poke.id}
+                searchName={poke.name}
+                searchImg={poke.sprites?.other.home.front_default}
+                searchType={poke.types[0].type.name}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div>
@@ -19,7 +28,6 @@ export const RenderGalery = ({pokemon,list}) => {
                 <div className="card" key={poke.id}>
                   <div className="flex-center">
                     <AppCard
-                    
                       id={poke.id}
                       name={poke.name}
                       img={poke.sprites.other.home.front_default}
@@ -32,6 +40,6 @@ export const RenderGalery = ({pokemon,list}) => {
           )}
         </div>
       )}
-        </>
-    )
-}
+    </>
+  );
+};

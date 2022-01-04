@@ -6,7 +6,7 @@ export const AppSearch = ({searchPokemon}) => {
   const [search, setSearch] = useState();
   const handleSearch = (e) => {
     e.preventDefault();
-   
+ 
     searchPokemon(search)
     
     

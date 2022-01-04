@@ -3,32 +3,41 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
+import { backGroundPokemon } from "./FunctionColorPokemon";
 import "../css/AppCard.css";
 
-export default function AppCard({ name, img, type, id, pokemon }) {
-  const navigate=useNavigate()
+export default function AppCard({ ...props }) {
+  const { name, img, type, id, searchId, searchName, searchType, searchImg } =
+    props;
+  const navigate = useNavigate();
 
-  
   return (
     <>
       <Card>
-        <div onClick={()=>  navigate( `/detail/${id}`)}>
+        <div onClick={() => navigate(`/detail/${searchId ? searchId : id}`)}>
           <CardMedia
             component="img"
-            image={pokemon ? pokemon.sprites.other.home.front_default : img}
             alt={name}
+            image={searchImg ? searchImg : img}
           />
 
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              #{pokemon ? pokemon.id : id}-{pokemon ? pokemon.name : name}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              Typo:{pokemon ? pokemon.types[0].type.name : type}
-            </Typography>
-          </CardContent>
+          <div className={backGroundPokemon(type, searchType)}>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                <span className="color">
+                  #{searchId ? searchId : id}-{searchName ? searchName : name}
+                </span>
+              </Typography>
+
+              <Typography variant="body2">
+                <span className="color">
+                  Typo:{searchType ? searchType : type}
+                </span>
+              </Typography>
+            </CardContent>
+          </div>
         </div>
       </Card>
     </>

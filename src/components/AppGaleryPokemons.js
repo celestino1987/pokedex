@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 
 import React, { useState } from "react";
 import { useEffect } from "react";
@@ -8,37 +9,59 @@ import { BtnGalery } from "./BtnGalery";
 
 import { RenderGalery } from "./RenderGalery";
 
-export const AppGaleryPokemons = ({ pokemon }) => {
-  const [isDisabled,setIsDisabled]=useState(false)
-  const [page, setPage] = useState(1);
-  
+export const AppGaleryPokemons = ({ pokemon, searchPokemon }) => {
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabledBtnNext, setIsDisabledBtnNext] = useState(false);
+  const [page, setPage] = useState(0);
+
   const dispatch = useDispatch();
   const state = useSelector((state) => state.reducerApi.posts[0]?.pokemons);
-  const list = state?.filter((list) =>
-    page === 1
-      ? list.id <= 10
+
+  let poke = state?.find(
+    (poke) =>
+      poke.name === pokemon?.toLowerCase() ||
+      (poke.id === Number(pokemon) && poke)
+  );
+  const lista = state?.filter((list) =>
+    page === 0
+      ? list.id <= 11
       : page >= 1
-      ? list.id > [page] + 0 && list.id <= [page + 1] + 0
+      ? list.id > [page] + 1 && list.id < [page + 1] + 2
       : ""
   );
+  const list = lista?.sort((a, b) => a.id - b.id);
+
   const changePage = (ini = false) => {
     ini
       ? setPage((prevPage) => prevPage + 1)
       : setPage((prevPage) => prevPage - 1);
+
+    
   };
-useEffect(()=>{
-  page=== 1 ? setIsDisabled(true):
-  setIsDisabled(false)
-},[page])
+
+  useEffect(() => {
+    page === 0
+      ? setIsDisabled(true)
+      : list?.length <= 9
+      ? setIsDisabledBtnNext(true)
+      : setIsDisabled(false) || setIsDisabledBtnNext(false);
+  }, [page, list]);
   useEffect(() => {
     dispatch(getApi());
   }, [dispatch]);
 
   return (
     <>
-      <BtnGalery changePage={changePage} isDisabled={isDisabled}  page={page}/>
+      <BtnGalery
+        changePage={changePage}
+        isDisabled={isDisabled}
+        isDisabledBtnNext={isDisabledBtnNext}
+        page={page}
+        poke={poke}
+        searchPokemon={searchPokemon}
+      />
 
-      <RenderGalery list={list} pokemon={pokemon} />
+      <RenderGalery list={list} pokemon={pokemon} poke={poke} />
     </>
   );
 };

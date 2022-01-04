@@ -1,18 +1,104 @@
-.card{
-    margin: 20px;
-    padding: 10px;
-    width: 20%;
-    border: 1px solid rgb(182, 179, 179);
-    border-radius: 10px;
-    display: inline-block;
-    
+.card {
+  margin: 20px;
+  padding: 10px;
+  width: 20%;
+  animation-name: border;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+@keyframes border {
+  from {
+    border: 1px solid rgb(255, 215, 0);
   }
-  
-.flex-center{
- 
-  
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    
+  to {
+    border: 1px solid rgb(255, 115, 0);
   }
+  from {
+    box-shadow: 0px 0px 5px 1px rgb(255, 215, 0);
+  }
+  to {
+    box-shadow: 0px 0px 5px 1px rgb(255, 115, 0);
+  }
+}
+.card:hover {
+  margin: 20px;
+  padding: 10px;
+  width: 20%;
+  animation-name: border-hover;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+@keyframes border-hover {
+  from {
+    border: 1px solid rgb(165, 165, 165);
+  }
+  to {
+    border: 1px solid rgb(77, 77, 77);
+  }
+  from {
+    box-shadow: 0px 0px 5px 1px rgb(165, 165, 165);
+  }
+  to {
+    box-shadow: 0px 0px 5px 1px rgb(77, 77, 77);
+  }
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.color {
+  color: white;
+}
+.backGround-fire {
+  background-color: rgb(248, 122, 122);
+}
+.backGround-water {
+  background-color: rgb(122, 181, 248);
+}
+.backGround-grass {
+  background-color: rgb(122, 248, 128);
+}
+.backGround-bug {
+  background-color: rgb(143, 245, 194);
+}
+.backGround-normal {
+  background-color: rgb(128, 128, 128);
+}
+.backGround-electric {
+  background-color: rgba(195, 240, 32, 0.61);
+}
+.backGround-posion {
+  background-color: rgba(121, 5, 101, 0.61);
+}
+.backGround-ground {
+  background-color: rgba(121, 57, 5, 0.986);
+}
+.backGround-fairy {
+  background-color: rgba(248, 158, 177, 0.986);
+}
+.backGround-fighting {
+  background-color: rgb(250, 139, 75);
+}
+.backGround-psychic {
+  background-color: rgb(221, 75, 250);
+}
+
+.backGround-rock {
+  background-color: rgba(150, 150, 150, 0.61);
+}
+.backGround-ice {
+  background-color: rgba(155, 182, 255, 0.61);
+}
+.backGround-dragon {
+  background-color: rgba(245, 141, 23, 0.61);
+}
+.backGround-ghost {
+  background-color: rgba(46, 0, 133, 0.808);
+}

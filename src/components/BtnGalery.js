@@ -1,32 +1,45 @@
-import { Button } from "@mui/material";
 import React from "react";
+import { Button } from "@mui/material";
+import ArrowBackIosSharpIcon from '@material-ui/icons/ArrowBackIosSharp';
+import ArrowForwardIosSharpIcon from '@material-ui/icons/ArrowForwardIosSharp';
+
+
 import "../css/BtnGalery.css";
 
-export const BtnGalery = ({ changePage, isDisabled, page }) => {
+
+export const BtnGalery = ({ changePage, isDisabled, isDisabledBtnNext, page ,poke,searchPokemon  }) => {
+  
   return (
     <>
-      <div className="box-pagination">
+     {!poke ?
+     <div className="box-pagination">
         <Button
           onClick={() => changePage(false)}
           disabled={isDisabled}
           className="btn"
         >
-          Atras{" "}
+           <ArrowBackIosSharpIcon/>
         </Button>
         <div className="pagination">
           {" "}
           <span className="margin">
             {" "}
-            {page > 2 && ". . ."} {page === 1 ? "" : page - 1}{" "}
+            {page > 1 && ". . ."} {page === 0 ? "" : page - 1}{" "}
           </span>{" "}
           <span className="page-actual">{page} </span>{" "}
-          <span className="margin">{page + 1} </span> . . .
+          <span className="margin">{isDisabledBtnNext ? null : page + 1 + ". . ."} </span> 
         </div>
-        <Button onClick={() => changePage(true)} className="btn">
+        <Button onClick={() => changePage(true)} className="btn" disabled={isDisabledBtnNext}>
           {" "}
-          delante
+         <ArrowForwardIosSharpIcon/>
         </Button>
       </div>
+    :
+     <div className="box-pagination">
+       <Button color="primary" onClick={()=> searchPokemon(" ")}> <ArrowBackIosSharpIcon/> pokemons </Button>
+     </div>  
+    
+    }
     </>
   );
 };
