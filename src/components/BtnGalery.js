@@ -2,8 +2,8 @@ import React from "react";
 import { Button } from "@mui/material";
 import ArrowBackIosSharpIcon from "@material-ui/icons/ArrowBackIosSharp";
 import ArrowForwardIosSharpIcon from "@material-ui/icons/ArrowForwardIosSharp";
-import "../css/BtnGalery.css";
 import { ComponentButtonSelect } from "./ComponentButtonSelect";
+import "../css/BtnGalery.css";
 
 export const BtnGalery = ({
   changePage,
