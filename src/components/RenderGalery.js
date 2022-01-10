@@ -6,7 +6,7 @@ export const RenderGalery = ({ list, poke }) => {
   return (
     <>
       {poke ? (
-        <div>
+        <div className="fondo">
           {poke && (
             <div className="card">
               <AppCard
@@ -19,11 +19,13 @@ export const RenderGalery = ({ list, poke }) => {
           )}
         </div>
       ) : (
-        <div>
-          {!list ? (
+        <div className="fondo">
+          { !list   ? (
             <AppSpinner />
-          ) : (
-            <div>
+          ) :
+           (
+             
+              <div>
               {list?.map((poke) => (
                 <div className="card" key={poke.id}>
                   <div className="flex-center">
@@ -32,7 +34,7 @@ export const RenderGalery = ({ list, poke }) => {
                       name={poke.name}
                       img={poke.sprites.other.home.front_default}
                       type={poke.types[0].type.name}
-                    />
+                      />
                   </div>
                 </div>
               ))}
