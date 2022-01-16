@@ -2,7 +2,11 @@
 export const types={
 
     GET_API_SET: "GET_API_SET",
-    GET_API : "GET_API"
+    GET_API : "GET_API",
+    GET_TYPE_SP:"GET_TYPE_SP",
+    GET_TYPE_SP_SET:"GET_TYPE_SP_SET",
+    LANGUAGE_ES_EN:"LANGUAGE_ES_EN",
+    LANGUAGE_ES_EN_SET:"LANGUAGE_ES_EN_SET"
 
 
 }

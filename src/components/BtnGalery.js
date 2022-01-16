@@ -38,7 +38,7 @@ export const BtnGalery = ({
                 {" "}
                 <span className="margin">
                   {" "}
-                  {page > 1 && ". . ."} {page === 0 ? "" : page - 1}{" "}
+                  {page > 1 && ". . ."} {page === 1 ? "" : page - 1}{" "}
                 </span>{" "}
                 <span className="page-actual">{page} </span>{" "}
                 <span className="margin">

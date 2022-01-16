@@ -8,14 +8,15 @@ import { BtnGalery } from "./BtnGalery";
 import { RenderGalery } from "./RenderGalery";
 
 export const AppGaleryPokemons = ({ pokemon, searchPokemon }) => {
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(true);
+
   const [isDisabledBtnNext, setIsDisabledBtnNext] = useState(false);
   const [page, setPage] = useState(0);
   const [pokeType, setPokeType] = useState();
 
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.reducerApi.posts[0]?.pokemons);
-
+  const state = useSelector((state) => state.reducerApi.posts?.pokemons);
+  
   let poke = state?.find(
     (poke) =>
       poke.name === pokemon?.toLowerCase() ||
@@ -51,8 +52,8 @@ const backPokemons = ()=>{
       : list?.length <= 9
       ? setIsDisabledBtnNext(true)
       : setIsDisabled(false) || setIsDisabledBtnNext(false);
-      pokeType ? setIsDisabled(true) && setIsDisabledBtnNext(true):
-      setIsDisabled(false) && setIsDisabledBtnNext(false)
+      pokeType && setIsDisabled(true) && setIsDisabledBtnNext(true)
+      
   }, [page, list]);
   useEffect(() => {
     dispatch(getApi());
@@ -64,7 +65,7 @@ const backPokemons = ()=>{
         changePage={changePage}
         isDisabled={isDisabled}
         isDisabledBtnNext={isDisabledBtnNext}
-        page={page}
+        page={page +1}
         poke={poke}
         searchPokemon={searchPokemon}
         searchType={searchType}

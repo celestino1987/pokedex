@@ -4,13 +4,18 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
-
 import { backGroundPokemon } from "./FunctionColorPokemon";
+
 import "../css/AppCard.css";
+import { capitalizarPrimeraLetra } from "./FunctionCapitalize";
+
 
 export default function AppCard({ ...props }) {
   const { name, img, type, id, searchId, searchName, searchType, searchImg } =
     props;
+   
+   
+
   const navigate = useNavigate();
 
   return (
@@ -27,13 +32,13 @@ export default function AppCard({ ...props }) {
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 <span className="color">
-                  #{searchId ? searchId : id}-{searchName ? searchName : name}
+                  #{searchId ? searchId : id}-{searchName ? capitalizarPrimeraLetra(searchName) : capitalizarPrimeraLetra(name)}
                 </span>
               </Typography>
 
               <Typography variant="body2">
                 <span className="color">
-                  Typo:{searchType ? searchType : type}
+                  Type:{searchType ? searchType : type}
                 </span>
               </Typography>
             </CardContent>

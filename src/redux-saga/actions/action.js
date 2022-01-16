@@ -1,20 +1,10 @@
-import {types} from '../types/types'
+import { types } from "../types/types";
 
+export const getApi = () => ({
+  type: types.GET_API,
+});
 
-export const getApi=()=>({
-    
-
-        type:types.GET_API,
-        
-    
-})
-
-
-export const getApiSet= (posts)=>({
-   
-
-        type:types.GET_API_SET,
-        payload:posts
-    
-
-})
+export const getApiSet = (pokemons) => ({
+  type: types.GET_API_SET,
+  payload: pokemons,
+});

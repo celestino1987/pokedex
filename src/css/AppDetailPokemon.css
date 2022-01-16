@@ -52,7 +52,7 @@ header span {
   transform: perspective(500px) rotatey(30deg);
   background: #000;
   border-radius: 10px;
-  opacity: 0.6;
+  opacity: 0.3;
 
   width: 30%;
 }
@@ -62,7 +62,7 @@ header span {
   align-items: center;
   transition: 2s;
   transform: perspective(500px) rotatey(0deg);
-
+  opacity: 1;
   width: 30%;
 }
 .details span {
@@ -84,13 +84,14 @@ transform: perspective(600px) rotatey(-30deg);
 width: 30%;
 background: #000;
 border-radius: 10px;
-opacity: 0.6;
+opacity: 0.3;
 
 
 }
 .stats-fondo:hover {
   transform: perspective(600px) rotatey(0deg);
   transition: 2s;
+  opacity: 1;
   width: 30%;
 }
 .progress {
@@ -100,4 +101,24 @@ opacity: 0.6;
 }
 .flex-center {
   display: flex;
+}
+
+@media (max-width: 1324px) { 
+
+
+  .box-poke-detail{
+  
+    background-size: 100%  100%;
+   
+  }
+  .box-img img {
+    width: 70%;
+   filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 1)); 
+ 
+    margin-left: 10%;
+  
+  }
+
+
+
 }

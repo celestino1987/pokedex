@@ -20,21 +20,21 @@ const MenuProps = {
 };
 
 const names = [
-  "bug",
-  "dragon",
-  "electric",
-  "fire",
-  "fairy",
-  "fighting",
-  "ghost",
-  "grass",
-  "ground",
-  "ice",
+  "Bug",
+  "Dragon",
+  "Electric",
+  "Fire",
+  "Fairy",
+  "Fighting",
+  "Ghost",
+  "Grass",
+  "Ground",
+  "Ice",
   "normal",
-  "poison",
-  "psychic",
-  "rock",
-  "water",
+  "Noison",
+  "Psychic",
+  "Rock",
+  "Water",
 ];
 
 function getStyles(name, personName, theme) {
@@ -61,7 +61,7 @@ export const ComponentButtonSelect = ({ searchType }) => {
   };
   let lastItem = personName[personName.length - 1];
   useEffect(() => {
-    searchType(lastItem);
+    searchType(lastItem?.toLowerCase());
   }, [lastItem]);
   return (
     <>

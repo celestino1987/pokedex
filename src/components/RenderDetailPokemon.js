@@ -3,14 +3,22 @@ import { Link } from "react-router-dom";
 import { AdvanceBar } from "./AdvanceBar";
 import ArrowBackSharpIcon from "@material-ui/icons/ArrowBackSharp";
 import AppSpinner from "./AppSpinner";
-import { backGroundPokemon } from "./FunctionColorPokemon";
+import { capitalizarPrimeraLetra } from "./FunctionCapitalize";
+import { Button } from "@material-ui/core";
+
+
 
 export const RenderDetailPokemon = ({
   paramsPokemon,
   state,
   pokemon,
   type,
+  handleChangeEn,
+  handleChangeEs,
+  language,
+  namesEsEn
 }) => {
+ 
   return (
     <>
       {!state ? (
@@ -18,6 +26,7 @@ export const RenderDetailPokemon = ({
       ) : (
         <div className="box-poke-detail">
           <header >
+            <Button onClick={handleChangeEs}>Es</Button>
             <Link to="/">
               {" "}
               <span>
@@ -25,12 +34,12 @@ export const RenderDetailPokemon = ({
                 <ArrowBackSharpIcon />{" "}
               </span>{" "}
             </Link>
-            
+            <Button onClick={handleChangeEn}>En</Button>
           </header>
           
           <div className=" box-order-details">
             <div className="details">
-            <h5> Name:{" "} <span> {paramsPokemon?.name}</span></h5>
+            <h5> Name:{" "} <span> {capitalizarPrimeraLetra(paramsPokemon?.name)}</span></h5>
               <h5>
                 {" "}
                 ID:{" "}
@@ -56,7 +65,7 @@ export const RenderDetailPokemon = ({
                 {" "}
                 Abilities:
                 <span >
-                  {paramsPokemon.abilities[0].ability.name}-
+                  {paramsPokemon.abilities[0].ability.name}{" "}
                   {paramsPokemon.abilities[1]?.ability.name}
                 </span>
               </h5>
@@ -64,7 +73,7 @@ export const RenderDetailPokemon = ({
                 {" "}
                 Type:
                 <span >
-                  {paramsPokemon?.types[0].type.name}{" "}
+                  {namesEsEn}{" "}
                   {paramsPokemon.types[1]?.type.name}
                 </span>
               </h5>
