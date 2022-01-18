@@ -68,9 +68,8 @@ header span {
 .details span {
   padding: 2px;
   margin: 10px;
-
-  border: 1px solid rgb(121, 120, 120);
-  border-radius: 10px;
+color: rgb(126, 126, 126);
+ 
 }
 .stats {
   width: 90%;

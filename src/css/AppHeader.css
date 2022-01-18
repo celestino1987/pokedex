@@ -34,3 +34,22 @@
   background-color: rgb(7, 7, 7);
   color: white;
 }
+
+.logo-img{
+
+  width: 50px;
+  border-radius: 30%;
+  margin: 10px;
+  border: 3px solid black;
+  opacity: 0.5;
+}
+.logo-img:hover{
+  opacity: 1;
+}
+.logo-change{
+  width: 50px;
+  border-radius: 30%;
+  margin: 10px;
+  border: 3px solid black;
+  opacity: 1;
+}

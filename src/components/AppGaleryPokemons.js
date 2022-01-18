@@ -1,7 +1,10 @@
+import { InsertDriveFileOutlined } from "@material-ui/icons";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getApi } from "../redux-saga/actions/action";
+import { changeLanguageSet } from "../redux-saga/actions/actionLanguage";
+import { getType } from "../redux-saga/actions/actionTypeEs";
 
 import { BtnGalery } from "./BtnGalery";
 
@@ -13,10 +16,11 @@ export const AppGaleryPokemons = ({ pokemon, searchPokemon }) => {
   const [isDisabledBtnNext, setIsDisabledBtnNext] = useState(false);
   const [page, setPage] = useState(0);
   const [pokeType, setPokeType] = useState();
-
-  const dispatch = useDispatch();
   const state = useSelector((state) => state.reducerApi.posts?.pokemons);
-  
+  const typeEs = useSelector((state) => state?.reducerTypeEs?.tipos);
+ 
+  const dispatch = useDispatch();
+
   let poke = state?.find(
     (poke) =>
       poke.name === pokemon?.toLowerCase() ||
@@ -31,10 +35,28 @@ export const AppGaleryPokemons = ({ pokemon, searchPokemon }) => {
   );
 
   const list = pokeType ? pokeType : lista?.sort((a, b) => a.id - b.id);
-    
+
   const searchType = (value) => {
-    if (value === undefined) return setPokeType((prevPoke) => (prevPoke = false));
-    setPokeType(state?.filter((poke) => poke.types[0].type.name === value));
+    if (value === undefined)
+      return setPokeType((prevPoke) => (prevPoke = false));
+
+    const chanheName = typeEs
+      .map((e) => e[0])
+      .find((r) => r?.toLowerCase() === value);
+
+    const filterIncludeName = typeEs.filter((e) => e.includes(chanheName));
+    const getpositionName = filterIncludeName.map((names) => names[1]);
+    let [nameTrasform] = getpositionName;
+
+    setPokeType(
+      state?.filter((poke) =>
+      chanheName
+          ? poke.types[0].type.name === nameTrasform.toLowerCase()
+          : poke.types[0].type.name === value
+      )
+    );
+
+
   };
 
   const changePage = (ini = false) => {
@@ -42,21 +64,21 @@ export const AppGaleryPokemons = ({ pokemon, searchPokemon }) => {
       ? setPage((prevPage) => prevPage + 1)
       : setPage((prevPage) => prevPage - 1);
   };
-const backPokemons = ()=>{
+  const backPokemons = () => {
+    setPokeType((prevPoke) => (prevPoke = false));
+  };
 
-  setPokeType((prevPoke) => (prevPoke = false))
-}
   useEffect(() => {
     page === 0
       ? setIsDisabled(true)
       : list?.length <= 9
       ? setIsDisabledBtnNext(true)
       : setIsDisabled(false) || setIsDisabledBtnNext(false);
-      pokeType && setIsDisabled(true) && setIsDisabledBtnNext(true)
-      
+    pokeType && setIsDisabled(true) && setIsDisabledBtnNext(true);
   }, [page, list]);
   useEffect(() => {
     dispatch(getApi());
+    dispatch(getType());
   }, [dispatch]);
 
   return (
@@ -65,7 +87,7 @@ const backPokemons = ()=>{
         changePage={changePage}
         isDisabled={isDisabled}
         isDisabledBtnNext={isDisabledBtnNext}
-        page={page +1}
+        page={page + 1}
         poke={poke}
         searchPokemon={searchPokemon}
         searchType={searchType}

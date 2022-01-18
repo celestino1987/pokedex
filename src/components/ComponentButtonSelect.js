@@ -7,6 +7,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
+import { useSelector } from "react-redux";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -19,24 +20,6 @@ const MenuProps = {
   },
 };
 
-const names = [
-  "Bug",
-  "Dragon",
-  "Electric",
-  "Fire",
-  "Fairy",
-  "Fighting",
-  "Ghost",
-  "Grass",
-  "Ground",
-  "Ice",
-  "normal",
-  "Noison",
-  "Psychic",
-  "Rock",
-  "Water",
-];
-
 function getStyles(name, personName, theme) {
   return {
     fontWeight:
@@ -48,6 +31,24 @@ function getStyles(name, personName, theme) {
 export const ComponentButtonSelect = ({ searchType }) => {
   const theme = useTheme();
   const [personName, setPersonName] = React.useState("");
+  const language = useSelector((state) => state.reducerLanguage);
+  const names = [
+    !language ? "Bug" : "Bicho",
+    !language ? "Dragon" : "Dragón",
+    !language ? "Electric" : "Eléctrico",
+    !language ? "Fire" : "Fuego",
+    !language ? "Fairy" : "Hada",
+    !language ? "Fighting" : "Lucha",
+    !language ? "Ghost" : "Fantasma",
+    !language ? "Grass" : "Planta",
+    !language ? "Ground" : "Tierra",
+    !language ? "Ice" : "Hielo",
+    !language ? "Normal" : "Normal",
+    !language ? "Poison" : "Veneno",
+    !language ? "Psychic" : "Psíquico",
+    !language ? "Rock" : "Roca",
+    !language ? "Water" : "Agua",
+  ];
 
   const handleChange = (event) => {
     const {
@@ -66,7 +67,9 @@ export const ComponentButtonSelect = ({ searchType }) => {
   return (
     <>
       <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-chip-label">Type</InputLabel>
+        <InputLabel id="demo-multiple-chip-label">
+          {language ? "Tipos" : "Types"}
+        </InputLabel>
         <Select
           labelId="demo-multiple-chip-label"
           id="demo-multiple-chip"

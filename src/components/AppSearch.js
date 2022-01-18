@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-export const AppSearch = ({searchPokemon}) => {
+export const AppSearch = ({searchPokemon,language}) => {
   
   const [search, setSearch] = useState();
   const handleSearch = (e) => {
@@ -18,7 +18,7 @@ export const AppSearch = ({searchPokemon}) => {
           <input
             value={search || ""}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="   Buscar pokemon . . ."
+            placeholder={  language ? "   Buscar pokemon . . .":"   Search pokemon . . ."}
           />
         </form>
       </div>

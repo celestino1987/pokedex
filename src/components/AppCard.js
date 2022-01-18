@@ -6,16 +6,16 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 import { backGroundPokemon } from "./FunctionColorPokemon";
 
-import "../css/AppCard.css";
 import { capitalizarPrimeraLetra } from "./FunctionCapitalize";
-
+import { transformlanguege } from "./functiontransform";
+import { useSelector } from "react-redux";
+import "../css/AppCard.css";
 
 export default function AppCard({ ...props }) {
   const { name, img, type, id, searchId, searchName, searchType, searchImg } =
     props;
-   
-   
-
+    const typeEs = useSelector((state) => state?.reducerTypeEs?.tipos);
+    const language = useSelector((state) => state.reducerLanguage);
   const navigate = useNavigate();
 
   return (
@@ -32,13 +32,16 @@ export default function AppCard({ ...props }) {
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
                 <span className="color">
-                  #{searchId ? searchId : id}-{searchName ? capitalizarPrimeraLetra(searchName) : capitalizarPrimeraLetra(name)}
+                  #{searchId ? searchId : id}-
+                  {searchName
+                    ? capitalizarPrimeraLetra(searchName)
+                    : capitalizarPrimeraLetra(name)}
                 </span>
               </Typography>
 
               <Typography variant="body2">
                 <span className="color">
-                  Type:{searchType ? searchType : type}
+                  Type:{searchType ? transformlanguege(typeEs,searchType,language)  :transformlanguege(typeEs,type,language) }
                 </span>
               </Typography>
             </CardContent>

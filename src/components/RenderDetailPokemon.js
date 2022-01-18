@@ -4,20 +4,17 @@ import { AdvanceBar } from "./AdvanceBar";
 import ArrowBackSharpIcon from "@material-ui/icons/ArrowBackSharp";
 import AppSpinner from "./AppSpinner";
 import { capitalizarPrimeraLetra } from "./FunctionCapitalize";
-import { Button } from "@material-ui/core";
+import { transformAbilities, transformlanguege } from "./functiontransform";
 
-
-
-export const RenderDetailPokemon = ({
-  paramsPokemon,
-  state,
-  pokemon,
-  type,
-  handleChangeEn,
-  handleChangeEs,
-  language,
-  namesEsEn
-}) => {
+export const RenderDetailPokemon = ({ ...props }) => {
+  const {
+    paramsPokemon,
+    state,
+    pokemon,
+    language,
+    typeEs,
+    abiEs,
+  } = props;
  
   return (
     <>
@@ -25,8 +22,7 @@ export const RenderDetailPokemon = ({
         <AppSpinner />
       ) : (
         <div className="box-poke-detail">
-          <header >
-            <Button onClick={handleChangeEs}>Es</Button>
+          <header>
             <Link to="/">
               {" "}
               <span>
@@ -34,47 +30,60 @@ export const RenderDetailPokemon = ({
                 <ArrowBackSharpIcon />{" "}
               </span>{" "}
             </Link>
-            <Button onClick={handleChangeEn}>En</Button>
           </header>
-          
+
           <div className=" box-order-details">
             <div className="details">
-            <h5> Name:{" "} <span> {capitalizarPrimeraLetra(paramsPokemon?.name)}</span></h5>
               <h5>
                 {" "}
-                ID:{" "}
-                <span >
-                  {pokemon ? pokemon.id : paramsPokemon.id}
+                {language ? "Nombre" : "Name"} :{" "}
+                <span> {capitalizarPrimeraLetra(paramsPokemon?.name)}</span>
+              </h5>
+              <h5>
+                {" "}
+                ID: <span>{pokemon ? pokemon.id : paramsPokemon.id}</span>
+              </h5>
+              <h5>
+                {" "}
+                {language ? "Alto" : "Height"}:
+                <span>{paramsPokemon.height}</span>
+              </h5>
+              <h5>
+                {" "}
+                {language ? "Ancho" : "Weight"} :{" "}
+                <span>{paramsPokemon.weight}</span>
+              </h5>
+              <h5>
+                {" "}
+                {language ? "Abilidades" : "Abilities"}:
+                <span>
+                  {}
+                  {transformAbilities(
+                    abiEs,
+                    paramsPokemon?.abilities[0].ability.name,
+                    language
+                  )}{" "}
+                  {transformAbilities(
+                    abiEs,
+                    paramsPokemon?.abilities[1].ability.name,
+                    language
+                  )}
                 </span>
               </h5>
               <h5>
                 {" "}
-                Height:
-                <span >
-                  {paramsPokemon.height}
-                </span>
-              </h5>
-              <h5>
-                {" "}
-                Weight :{" "}
-                <span >
-                  {paramsPokemon.weight}
-                </span>
-              </h5>
-              <h5>
-                {" "}
-                Abilities:
-                <span >
-                  {paramsPokemon.abilities[0].ability.name}{" "}
-                  {paramsPokemon.abilities[1]?.ability.name}
-                </span>
-              </h5>
-              <h5>
-                {" "}
-                Type:
-                <span >
-                  {namesEsEn}{" "}
-                  {paramsPokemon.types[1]?.type.name}
+                {language ? "Tipo" : "Type"}:
+                <span>
+                  {transformlanguege(
+                    typeEs,
+                    paramsPokemon?.types[0].type.name,
+                    language
+                  )}{" "}
+                  {transformlanguege(
+                    typeEs,
+                    paramsPokemon?.types[1]?.type.name,
+                    language
+                  )}
                 </span>
               </h5>
             </div>
@@ -85,61 +94,61 @@ export const RenderDetailPokemon = ({
               />
             </div>
             <div className="stats-fondo">
-            <div className="stats">
-              <h5>Base Stats</h5>
-              <h5>
-                {" "}
-                HP :
-                <AdvanceBar
-                  done={paramsPokemon.stats[0].base_stat}
-                  type={type}
-                />
-              </h5>
+              <div className="stats">
+                <h5>{language ? "Estadísticas" : "Base Stats"}</h5>
+                <h5>
+                  {" "}
+                  HP :
+                  <AdvanceBar
+                    done={paramsPokemon.stats[0].base_stat}
+                    type={paramsPokemon?.types[0].type.name}
+                  />
+                </h5>
 
-              <h5>
-                {" "}
-                Attack :
-                <AdvanceBar
-                  done={paramsPokemon.stats[1].base_stat}
-                  type={type}
-                />
-              </h5>
-              <h5>
-                {" "}
-                Defense :{" "}
-                <AdvanceBar
-                  done={paramsPokemon.stats[2].base_stat}
-                  type={type}
-                />
-              </h5>
-              <h5>
-                {" "}
-                Sp.Attack:{" "}
-                <AdvanceBar
-                  done={paramsPokemon.stats[3].base_stat}
-                  type={type}
+                <h5>
+                  {" "}
+                  {language ? "Attaque" : "Attack"} :
+                  <AdvanceBar
+                    done={paramsPokemon.stats[1].base_stat}
+                    type={paramsPokemon?.types[0].type.name}
                   />
-              </h5>
-              <h5>
-                {" "}
-                Sp.Defence :
-                <AdvanceBar
-                  done={paramsPokemon.stats[4].base_stat}
-                  type={type}
+                </h5>
+                <h5>
+                  {" "}
+                  {language ? "Defensa" : "Defense"} :{" "}
+                  <AdvanceBar
+                    done={paramsPokemon.stats[2].base_stat}
+                    type={paramsPokemon?.types[0].type.name}
                   />
-              </h5>
-              <h5>
-                {" "}
-                Speed :
-                <AdvanceBar
-                  done={paramsPokemon.stats[5].base_stat}
-                  type={type}
+                </h5>
+                <h5>
+                  {" "}
+                  {language ? "Sp.Ataque" : "Sp.Attack"}:{" "}
+                  <AdvanceBar
+                    done={paramsPokemon.stats[3].base_stat}
+                    type={paramsPokemon?.types[0].type.name}
                   />
-              </h5>
+                </h5>
+                <h5>
+                  {" "}
+                  {language ? "Sp.Defensa" : "Sp.Defence"} :
+                  <AdvanceBar
+                    done={paramsPokemon.stats[4].base_stat}
+                    type={paramsPokemon?.types[0].type.name}
+                  />
+                </h5>
+                <h5>
+                  {" "}
+                  {language ? "Rapidez" : "Speed"} :
+                  <AdvanceBar
+                    done={paramsPokemon.stats[5].base_stat}
+                    type={paramsPokemon?.types[0].type.name}
+                  />
+                </h5>
+              </div>
             </div>
           </div>
         </div>
-                  </div>
       )}
     </>
   );

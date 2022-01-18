@@ -3,8 +3,12 @@ import { useHookSearch } from "../hooks/useHookSearch";
 import { AppGaleryPokemons } from "./AppGaleryPokemons";
 import { AppHeader } from "./AppHeader";
 
+
+
 function App() {
   const [pokemon, searchPokemon] = useHookSearch();
+
+
 
   return (
     <>

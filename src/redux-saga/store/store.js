@@ -5,11 +5,13 @@ import { reducerApi } from "../reducers/reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { reducerTypeEs } from "../reducers/reducerTypeEs";
 import { reducerLanguage } from "../reducers/reducerLanguage";
+import { reducerAbilities } from "../reducers/reducerAbilities";
 
 const reducer = combineReducers({
-  reducerTypeEs: reducerTypeEs,
   reducerApi: reducerApi,
-  reducerLanguage: reducerLanguage,
+  reducerTypeEs: reducerTypeEs,
+  reducerAbilities:reducerAbilities,
+  reducerLanguage: reducerLanguage
 });
 
 const sagaMiddleware = createSagaMiddleware();
