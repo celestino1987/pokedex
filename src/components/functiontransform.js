@@ -11,7 +11,7 @@ export const transformAbilities = (srt, tipo, isBool) => {
 
   const nameEn = srt
     .map((e) => e[1])
-    .find((r) => r?.toLowerCase() === tipo.replace("-", " ").toLowerCase());
+    .find((r) => r?.toLowerCase() === tipo?.replace("-", " ").toLowerCase());
 
   const namesEsEn = srt
     .find((e) => e.includes(nameEn))

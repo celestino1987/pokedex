@@ -65,7 +65,7 @@ export const RenderDetailPokemon = ({ ...props }) => {
                   )}{" "}
                   {transformAbilities(
                     abiEs,
-                    paramsPokemon?.abilities[1].ability.name,
+                    paramsPokemon?.abilities[1]?.ability.name,
                     language
                   )}
                 </span>
