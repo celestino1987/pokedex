@@ -28,7 +28,7 @@ const handleChangleLenguagEn =()=>{
   return (
     <>
         <div> 
-          <Button onClick={handleChangleLenguagEn}><img className={isLogoEn ?"logo-change":"logo-img" }src={en} alt="Ingles"/></Button>
+          <Button  onClick={handleChangleLenguagEn}><img className={isLogoEn ?"logo-change":"logo-img" }src={en} alt="Ingles"/></Button>
           <Button onClick={handleChangleLenguage}><img className={isLogoEs ?"logo-change":"logo-img"} src={es} alt="Español"/></Button>
         </div>
       <div className="header">

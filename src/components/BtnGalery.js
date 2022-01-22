@@ -15,6 +15,7 @@ export const BtnGalery = ({
   searchType,
   pokeType,
   backPokemons,
+  language
 }) => {
   return (
     <>
@@ -32,7 +33,7 @@ export const BtnGalery = ({
               <ArrowBackIosSharpIcon />
             </Button>
             {pokeType ? (
-              <Button onClick={backPokemons}>All Pokemons</Button>
+              <Button onClick={backPokemons}>{language?  "Pokemons" :"All Pokemons"}</Button>
             ) : (
               <div className="pagination">
                 {" "}

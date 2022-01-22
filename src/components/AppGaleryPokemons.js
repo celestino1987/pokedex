@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getApi } from "../redux-saga/actions/action";
-import { changeLanguageSet } from "../redux-saga/actions/actionLanguage";
+
 import { getType } from "../redux-saga/actions/actionTypeEs";
 
 import { BtnGalery } from "./BtnGalery";
@@ -18,6 +18,7 @@ export const AppGaleryPokemons = ({ pokemon, searchPokemon }) => {
   const [pokeType, setPokeType] = useState();
   const state = useSelector((state) => state.reducerApi.posts?.pokemons);
   const typeEs = useSelector((state) => state?.reducerTypeEs?.tipos);
+  const language = useSelector((state) => state.reducerLanguage);
  
   const dispatch = useDispatch();
 
@@ -93,6 +94,7 @@ export const AppGaleryPokemons = ({ pokemon, searchPokemon }) => {
         searchType={searchType}
         pokeType={pokeType}
         backPokemons={backPokemons}
+        language={language}
       />
 
       <RenderGalery list={list} pokemon={pokemon} poke={poke} />

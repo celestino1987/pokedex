@@ -25,9 +25,9 @@ export const RenderDetailPokemon = ({ ...props }) => {
           <header>
             <Link to="/">
               {" "}
-              <span>
+              <span className="circle">
                 {" "}
-                <ArrowBackSharpIcon />{" "}
+                <ArrowBackSharpIcon className="fa"/>{" "}
               </span>{" "}
             </Link>
           </header>

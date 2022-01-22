@@ -41,7 +41,7 @@ export default function AppCard({ ...props }) {
 
               <Typography variant="body2">
                 <span className="color">
-                  Type:{searchType ? transformlanguege(typeEs,searchType,language)  :transformlanguege(typeEs,type,language) }
+                  {language?"Tipo" : "Type"}:{searchType ? transformlanguege(typeEs,searchType,language)  :transformlanguege(typeEs,type,language) }
                 </span>
               </Typography>
             </CardContent>
